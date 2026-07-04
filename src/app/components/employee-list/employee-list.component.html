@@ -1,0 +1,66 @@
+<div class="page-shell">
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">Employee Management</p>
+      <h2>Employee Directory</h2>
+    </div>
+    <button class="primary-btn" (click)="goToAddEmployee()">Add Employee</button>
+  </header>
+
+  <div class="toolbar">
+    <div class="search-group">
+      <input type="text" placeholder="Search by name, email or role" [(ngModel)]="searchTerm" (ngModelChange)="onSearch()" />
+      <input type="text" placeholder="Filter by group" [(ngModel)]="searchGroup" (ngModelChange)="onSearch()" />
+    </div>
+    <label class="page-size">
+      <span>Rows per page</span>
+      <select [(ngModel)]="pageSize" (change)="currentPage = 1; applyFilters()">
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="50">50</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="alert" *ngIf="alertMessage" [ngClass]="alertType">
+    {{ alertMessage }}
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th (click)="sortBy('firstName')">Name</th>
+          <th (click)="sortBy('email')">Email</th>
+          <th (click)="sortBy('group')">Group</th>
+          <th (click)="sortBy('position')">Position</th>
+          <th (click)="sortBy('basicSalary')">Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of visibleEmployees">
+          <td>
+            <button class="link-btn" (click)="openDetail(employee.id)">{{ employee.firstName }} {{ employee.lastName }}</button>
+          </td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.group }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.basicSalary | currency:'IDR':'symbol':'1.0-0' }}</td>
+          <td>
+            <div class="action-group">
+              <button class="action-btn warning" (click)="triggerEdit(employee)">Edit</button>
+              <button class="action-btn danger" (click)="triggerDelete(employee)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

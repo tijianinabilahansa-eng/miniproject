@@ -1,0 +1,24 @@
+<div class="auth-shell">
+  <div class="auth-card">
+    <div class="brand-block">
+      <h1>Employee Hub</h1>
+      <p>Manage your team smarter with a polished HR dashboard.</p>
+    </div>
+
+    <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <label>
+        <span>Username</span>
+        <input type="text" name="username" [(ngModel)]="username" required />
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input type="password" name="password" [(ngModel)]="password" required />
+      </label>
+
+      <button type="submit" class="primary-btn">Login</button>
+      <p class="hint">Use admin / password123 for the demo.</p>
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</div>
