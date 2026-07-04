@@ -15,16 +15,15 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeeFormComponent {
   employee: Employee = {
     id: 0,
+    username: '',
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
     birthDate: '',
     basicSalary: 0,
+    status: 'Active',
     group: '',
-    position: '',
-    address: '',
-    hireDate: ''
+    description: ''
   };
   groups: string[] = [];
   showGroupDropdown = false;
@@ -91,16 +90,15 @@ export class EmployeeFormComponent {
 
   private isFormValid(): boolean {
     return Boolean(
+      this.employee.username.trim() &&
       this.employee.firstName.trim() &&
       this.employee.lastName.trim() &&
       this.employee.email.trim() &&
-      this.employee.phone.trim() &&
       this.employee.birthDate &&
       this.employee.basicSalary !== null &&
       this.employee.group.trim() &&
-      this.employee.position.trim() &&
-      this.employee.address.trim() &&
-      this.employee.hireDate
+      this.employee.status.trim() &&
+      this.employee.description
     );
   }
 }

@@ -9,8 +9,9 @@
 
   <div class="toolbar">
     <div class="search-group">
-      <input type="text" placeholder="Search by name, email or role" [(ngModel)]="searchTerm" (ngModelChange)="onSearch()" />
+      <input type="text" placeholder="Search by username, name or email" [(ngModel)]="searchTerm" (ngModelChange)="onSearch()" />
       <input type="text" placeholder="Filter by group" [(ngModel)]="searchGroup" (ngModelChange)="onSearch()" />
+      <input type="text" placeholder="Filter by status" [(ngModel)]="searchStatus" (ngModelChange)="onSearch()" />
     </div>
     <label class="page-size">
       <span>Rows per page</span>
@@ -33,7 +34,7 @@
           <th (click)="sortBy('firstName')">Name</th>
           <th (click)="sortBy('email')">Email</th>
           <th (click)="sortBy('group')">Group</th>
-          <th (click)="sortBy('position')">Position</th>
+          <th (click)="sortBy('status')">Status</th>
           <th (click)="sortBy('basicSalary')">Salary</th>
           <th>Actions</th>
         </tr>
@@ -41,11 +42,11 @@
       <tbody>
         <tr *ngFor="let employee of visibleEmployees">
           <td>
-            <button class="link-btn" (click)="openDetail(employee.id)">{{ employee.firstName }} {{ employee.lastName }}</button>
+            <button class="link-btn" (click)="openDetail(employee.id)">{{ employee.username }} — {{ employee.firstName }} {{ employee.lastName }}</button>
           </td>
           <td>{{ employee.email }}</td>
           <td>{{ employee.group }}</td>
-          <td>{{ employee.position }}</td>
+          <td>{{ employee.status }}</td>
           <td>{{ employee.basicSalary | currency:'IDR':'symbol':'1.0-0' }}</td>
           <td>
             <div class="action-group">

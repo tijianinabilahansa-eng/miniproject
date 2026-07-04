@@ -9,14 +9,13 @@
     </header>
 
     <div class="info-grid">
+      <div><span>Username</span><strong>{{ employee.username }}</strong></div>
       <div><span>Email</span><strong>{{ employee.email }}</strong></div>
-      <div><span>Phone</span><strong>{{ employee.phone }}</strong></div>
-      <div><span>Birth Date</span><strong>{{ employee.birthDate | date:'mediumDate' }}</strong></div>
-      <div><span>Hire Date</span><strong>{{ employee.hireDate | date:'mediumDate' }}</strong></div>
+      <div><span>Birth Date</span><strong>{{ employee.birthDate | date:'medium' }}</strong></div>
       <div><span>Group</span><strong>{{ employee.group }}</strong></div>
-      <div><span>Position</span><strong>{{ employee.position }}</strong></div>
+      <div><span>Status</span><strong>{{ employee.status }}</strong></div>
       <div><span>Basic Salary</span><strong>{{ employee.basicSalary | currency:'IDR':'symbol':'1.0-0' }}</strong></div>
-      <div><span>Address</span><strong>{{ employee.address }}</strong></div>
+      <div><span>Description</span><strong>{{ employee.description | date:'medium' }}</strong></div>
     </div>
   </div>
 </div>

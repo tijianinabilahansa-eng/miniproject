@@ -1,13 +1,12 @@
 export interface Employee {
   id: number;
+  username: string;
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
-  birthDate: string;
+  birthDate: string; // ISO datetime string
   basicSalary: number;
+  status: string;
   group: string;
-  position: string;
-  address: string;
-  hireDate: string;
+  description: string; // ISO datetime string (per spec)
 }

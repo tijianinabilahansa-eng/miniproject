@@ -9,38 +9,38 @@
 
     <form class="employee-form" (ngSubmit)="onSubmit()" #employeeForm="ngForm">
       <div class="grid">
-        <label>
-          <span>First Name</span>
-          <input type="text" name="firstName" [(ngModel)]="employee.firstName" required />
-        </label>
-        <label>
-          <span>Last Name</span>
-          <input type="text" name="lastName" [(ngModel)]="employee.lastName" required />
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" [(ngModel)]="employee.email" required />
-        </label>
-        <label>
-          <span>Phone</span>
-          <input type="text" name="phone" [(ngModel)]="employee.phone" required />
-        </label>
-        <label>
-          <span>Birth Date</span>
-          <input type="date" name="birthDate" [(ngModel)]="employee.birthDate" [max]="today" required />
-        </label>
-        <label>
-          <span>Hire Date</span>
-          <input type="date" name="hireDate" [(ngModel)]="employee.hireDate" required />
-        </label>
-        <label>
-          <span>Basic Salary</span>
-          <input type="number" name="basicSalary" [(ngModel)]="employee.basicSalary" required />
-        </label>
-        <label>
-          <span>Position</span>
-          <input type="text" name="position" [(ngModel)]="employee.position" required />
-        </label>
+          <label>
+            <span>Username</span>
+            <input type="text" name="username" [(ngModel)]="employee.username" required />
+          </label>
+          <label>
+            <span>First Name</span>
+            <input type="text" name="firstName" [(ngModel)]="employee.firstName" required />
+          </label>
+          <label>
+            <span>Last Name</span>
+            <input type="text" name="lastName" [(ngModel)]="employee.lastName" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" [(ngModel)]="employee.email" required />
+          </label>
+          <label>
+            <span>Birth Date</span>
+            <input type="datetime-local" name="birthDate" [(ngModel)]="employee.birthDate" [max]="today + 'T23:59'" required />
+          </label>
+          <label>
+            <span>Basic Salary</span>
+            <input type="number" name="basicSalary" [(ngModel)]="employee.basicSalary" required />
+          </label>
+          <label>
+            <span>Status</span>
+            <select name="status" [(ngModel)]="employee.status" required>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="On Leave">On Leave</option>
+            </select>
+          </label>
       </div>
 
       <label class="full-width">
@@ -56,8 +56,8 @@
       </label>
 
       <label class="full-width">
-        <span>Address</span>
-        <textarea name="address" [(ngModel)]="employee.address" required></textarea>
+        <span>Description (datetime)</span>
+        <input type="datetime-local" name="description" [(ngModel)]="employee.description" required />
       </label>
 
       <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>

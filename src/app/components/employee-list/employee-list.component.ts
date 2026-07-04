@@ -17,6 +17,7 @@ export class EmployeeListComponent implements OnInit {
   filteredEmployees: Employee[] = [];
   searchTerm = '';
   searchGroup = '';
+  searchStatus = '';
   sortColumn: keyof Employee = 'firstName';
   sortDirection: 'asc' | 'desc' = 'asc';
   pageSize = 10;
@@ -88,6 +89,7 @@ export class EmployeeListComponent implements OnInit {
   applyFilters(): void {
     const term = this.searchTerm.toLowerCase();
     const group = this.searchGroup.toLowerCase();
+    const status = this.searchStatus.toLowerCase();
 
     this.filteredEmployees = this.employees
       .filter((employee) => {
@@ -95,10 +97,11 @@ export class EmployeeListComponent implements OnInit {
           employee.firstName.toLowerCase().includes(term) ||
           employee.lastName.toLowerCase().includes(term) ||
           employee.email.toLowerCase().includes(term) ||
-          employee.position.toLowerCase().includes(term)
+          employee.username.toLowerCase().includes(term)
         );
         const matchesGroup = !group || employee.group.toLowerCase().includes(group);
-        return matchesTerm && matchesGroup;
+        const matchesStatus = !status || employee.status.toLowerCase().includes(status);
+        return matchesTerm && matchesGroup && matchesStatus;
       })
       .sort((a, b) => {
         const firstValue = a[this.sortColumn];
