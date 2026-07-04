@@ -1,13 +1,14 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="app-shell">
   <nav class="topbar" *ngIf="authService.isAuthenticated()">
     <div class="brand">
       <h1>{{ title }}</h1>
       <p>Responsive employee management portal</p>
     </div>
-    <button class="logout-btn" (click)="logout()">Logout</button>
+    <button type="button" class="logout-btn" [attr.aria-label]="'Logout'" (click)="logout()">Logout</button>
   </nav>
 
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <router-outlet></router-outlet>
   </main>
 </div>

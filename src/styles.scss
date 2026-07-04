@@ -3,3 +3,31 @@
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
+
+/* Accessibility: visible focus for keyboard users */
+:focus {
+	outline: 3px solid rgba(59, 130, 246, 0.8); /* blue-500 */
+	outline-offset: 2px;
+}
+
+/* Skip link styles */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	z-index: -9999;
+}
+.skip-link:focus {
+	left: 1rem;
+	top: 1rem;
+	width: auto;
+	height: auto;
+	padding: 0.5rem 1rem;
+	background: #111827; /* gray-900 */
+	color: white;
+	z-index: 1000;
+	border-radius: 0.375rem;
+}

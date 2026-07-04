@@ -47,10 +47,10 @@
         <span>Group</span>
         <div class="dropdown">
           <input type="text" [ngModel]="employee.group" (ngModelChange)="groupFilter = $event" name="groupInput" (focus)="toggleGroupDropdown()" placeholder="Select group" />
-          <button type="button" class="dropdown-toggle" (click)="toggleGroupDropdown()">▾</button>
+          <button type="button" class="dropdown-toggle" (click)="toggleGroupDropdown()" [attr.aria-label]="'Toggle group dropdown'">▾</button>
           <div class="dropdown-menu" *ngIf="showGroupDropdown">
-            <input type="text" placeholder="Search group" [(ngModel)]="groupFilter" name="groupFilter" />
-            <button type="button" *ngFor="let group of filteredGroups" (click)="selectGroup(group)">{{ group }}</button>
+            <input type="text" placeholder="Search group" [(ngModel)]="groupFilter" name="groupFilter" [attr.aria-label]="'Search groups'" />
+            <button type="button" *ngFor="let group of filteredGroups" (click)="selectGroup(group)" [attr.aria-label]="'Select group ' + group">{{ group }}</button>
           </div>
         </div>
       </label>

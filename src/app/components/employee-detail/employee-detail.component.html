@@ -5,7 +5,7 @@
         <p class="eyebrow">Employee Profile</p>
         <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
       </div>
-      <button class="primary-btn" (click)="goBack()">OK</button>
+      <button type="button" class="primary-btn" (click)="goBack()" [attr.aria-label]="'Back to list'">OK</button>
     </header>
 
     <div class="info-grid">
